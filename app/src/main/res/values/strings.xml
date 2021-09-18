@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">RandomPicture</string>
+    <string name="app_name">CatsAndDogs</string>
+    <string name="btn_text_cats">Котики</string>
+    <string name="byn_text_dogs">Собачки</string>
 </resources>

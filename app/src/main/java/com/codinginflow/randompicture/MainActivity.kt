@@ -12,7 +12,6 @@ import com.codinginflow.randompicture.api.BASE_URL
 import com.codinginflow.randompicture.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.NonCancellable.start
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
@@ -52,27 +51,24 @@ class MainActivity : AppCompatActivity() {
             setExitFadeDuration(300)
             start()
         }
+
     }
 
     private fun makeApiRequest() {
         val api = Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(ApiRequest::class.java)
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ApiRequest::class.java)
 
         GlobalScope.launch(Dispatchers.IO) {
             try {
                 val response = api.getRandomDog()
-                Log.d("MAIN", "Size: ${response.fileSizeBytes}")
+                Log.d("MAIN", "Size: ${response.file}")
 
-                if (response.fileSizeBytes < 400_000) {
-                    withContext(Dispatchers.Main) {
-                        Glide.with(applicationContext).load(response.url).into(binding.ivRandomDog)
-                        binding.ivRandomDog.visibility = View.VISIBLE
-                    }
-                } else {
-                    makeApiRequest()
+                withContext(Dispatchers.Main) {
+                    Glide.with(applicationContext).load(response.file).into(binding.ivRandomDog)
+                    binding.ivRandomDog.visibility = View.VISIBLE
                 }
             } catch (e: Exception) {
                 Log.e("MAIN", "Error: ${e.message}")

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -8,7 +9,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.codinginflow.randompicture"
+        applicationId "ru.llxodz.catsanddogs"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -31,7 +32,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding = true
+        true
     }
 }
 
@@ -41,7 +42,7 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -60,4 +61,7 @@ dependencies {
 
     //Dot loader
     implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
+
+    //Custom Button
+    implementation 'com.github.whilu.CustomButton:library:1.0.0'
 }
