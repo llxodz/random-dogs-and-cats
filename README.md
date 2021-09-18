@@ -1,1 +1,1 @@
-Random pictures of dogs using Retrofit2 
+Random pictures of cats and dogs using Retroft2 
